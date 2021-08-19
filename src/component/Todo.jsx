@@ -1,13 +1,18 @@
 import React from "react";
 
-const Todo = () => {
+const Todo = ({ todo, handleChangeStatus }) => {
   return (
     <div>
-      <li>
+      <li className={todo.isCompleted ? "completed" : ""}>
         <div className="form-check">
           <label className="form-check-label">
-            <input className="checkbox" type="checkbox" />
-            Buy Milk.
+            <input
+              className="checkbox"
+              type="checkbox"
+              checked={todo.isCompleted}
+              onChange={() => handleChangeStatus(todo.id)}
+            />
+            {todo.title}
             <i className="input-helper"> </i>
           </label>
         </div>
