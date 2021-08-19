@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Todo from "./component/Todo";
 import { v4 as uuid } from "uuid";
 import "./App.css";
+import TodoInput from "./component/TodoInput";
 /**********************/
 const initialTodos = [
   {
@@ -47,16 +48,7 @@ const App = () => {
           <div className="card px-3">
             <div className="card-body">
               <h4 className="card-title">Awesome Todo list</h4>
-              <div className="add-items d-flex">
-                <input
-                  type="text"
-                  className="form-control todo-list-input"
-                  placeholder="What do you need to do today?"
-                />
-                <button className="add btn btn-primary font-weight-bold todo-list-add-btn">
-                  Add
-                </button>
-              </div>
+              <TodoInput setTodos={setTodos} />
               <div className="list-wrapper">
                 <ul className="d-flex flex-column todo-list">
                   {todos.map((todo) => (
