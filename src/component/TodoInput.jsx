@@ -6,6 +6,7 @@ const TodoInput = ({ setTodos }) => {
     setTodos((todos) => {
       return [{ title: inputData, isCompleted: false, id: uuid() }, ...todos];
     });
+    setInputData("");
   };
   return (
     <div>
