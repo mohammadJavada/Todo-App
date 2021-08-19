@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ todo, handleChangeStatus }) => {
+const Todo = ({ todo, handleChangeStatus, handleDeleteTodos }) => {
   return (
     <div>
       <li className={todo.isCompleted ? "completed" : ""}>
@@ -16,7 +16,10 @@ const Todo = ({ todo, handleChangeStatus }) => {
             <i className="input-helper"> </i>
           </label>
         </div>
-        <i className="remove mdi mdi-close-circle-outline"></i>
+        <i
+          onClick={() => handleDeleteTodos(todo.id)}
+          className="remove mdi mdi-close-circle-outline"
+        ></i>
       </li>
     </div>
   );

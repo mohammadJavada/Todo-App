@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Todo from "./component/Todo";
 import { v4 as uuid } from "uuid";
 import "./App.css";
+/**********************/
 const initialTodos = [
   {
     id: uuid(),
@@ -19,8 +20,10 @@ const initialTodos = [
     isCompleted: false,
   },
 ];
+/**********************/
 const App = () => {
   const [todos, setTodos] = useState(initialTodos);
+  /*******************/
   const handleChangeStatus = (todoId) => {
     const newTodos = todos.map((todo) => {
       if (todo.id === todoId) {
@@ -31,6 +34,12 @@ const App = () => {
     });
     setTodos(newTodos);
   };
+  /**************************/
+  const handleDeleteTodos = (todoId) => {
+    const newTodos = todos.filter((todo) => todo.id !== todoId);
+    setTodos(newTodos);
+  };
+  /*****************************/
   return (
     <div className="page-content page-container" id="page-content">
       <div className="row container d-flex justify-content-center">
@@ -51,7 +60,11 @@ const App = () => {
               <div className="list-wrapper">
                 <ul className="d-flex flex-column todo-list">
                   {todos.map((todo) => (
-                    <Todo todo={todo} handleChangeStatus={handleChangeStatus} />
+                    <Todo
+                      todo={todo}
+                      handleChangeStatus={handleChangeStatus}
+                      handleDeleteTodos={handleDeleteTodos}
+                    />
                   ))}
                 </ul>
               </div>
